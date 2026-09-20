@@ -13,6 +13,7 @@
 #Extension App-file
 *.app
 *.exe
+**/build/
 #Rapid Application Development File
 rad.json
 #Translation Base-file
