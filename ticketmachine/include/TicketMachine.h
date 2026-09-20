@@ -13,11 +13,18 @@ public:
     TicketMachine(/* args */);
     ~TicketMachine();
     void showPrompt();
-    void insertMoney();
+    void insertMoney(int money);
     void showBalance();
     void printTicket();
     void showTotal();
 };
 
+TicketMachine::TicketMachine(/* args */)
+    : PRICE(10), balance(0), total(0)
+{
+}
 
-#endif // 
+TicketMachine::~TicketMachine()
+{
+}
+#endif //

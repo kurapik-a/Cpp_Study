@@ -1,15 +1,32 @@
 #include "TicketMachine.h"
 
-TicketMachine::TicketMachine(/* args */):PRICE(10)
-{
-}
+#include <iostream>
+using namespace std;
 
-TicketMachine::~TicketMachine()
-{
-}
+
 
 void TicketMachine::showPrompt()
 {
+    cout << "something";
+}
 
+void TicketMachine::insertMoney(int money)
+{
 
+    balance += money;
+}
+
+void TicketMachine::showBalance()
+{
+    cout << "balance: " << balance << endl;
+}
+
+void TicketMachine::printTicket()
+{
+    cout << "ticket: " << PRICE << endl;
+}
+
+void TicketMachine::showTotal()
+{
+    cout << "total:" << endl;
 }

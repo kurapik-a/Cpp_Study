@@ -6,9 +6,11 @@ using namespace std;
 
 int main()
 {
-    cout << "hello world. I'm " << 18 << " today" << endl;
-    int number;
-    cin >> number;
-    cout << "wo " << number << " shuile" << endl;
+    cout << "hello world. I'm " << 23 << " today" << endl;
+    TicketMachine ts;
+    ts.insertMoney(100);
+    ts.insertMoney(300);
+    ts.showBalance();
+
     return 0;
 }
