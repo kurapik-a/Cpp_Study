@@ -19,12 +19,4 @@ public:
     void showTotal();
 };
 
-TicketMachine::TicketMachine(/* args */)
-    : PRICE(10), balance(0), total(0)
-{
-}
-
-TicketMachine::~TicketMachine()
-{
-}
 #endif //

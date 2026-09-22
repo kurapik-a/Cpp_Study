@@ -3,7 +3,14 @@
 #include <iostream>
 using namespace std;
 
+TicketMachine::TicketMachine(/* args */)
+    : PRICE(10), balance(0), total(0)
+{
+}
 
+TicketMachine::~TicketMachine()
+{
+}
 
 void TicketMachine::showPrompt()
 {
