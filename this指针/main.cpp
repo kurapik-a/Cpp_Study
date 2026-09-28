@@ -20,8 +20,8 @@ public:
     ~person()
     {
     }
-    //引用相当于给变量起别名
-    person& addage(person &p)
+    // 引用相当于给变量起别名
+    person &addage(person &p)
     {
         this->age += p.age;
         return *this;
