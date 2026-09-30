@@ -9,15 +9,20 @@ void test01()
 {
     employee employee1(1, "张三", 1);
     employee1.showInfo();
+    employee employee2(2, "李三", 2);
+    employee2.showInfo();
 }
 
 void test02()
 {
-    //多态体现，同一个指针->不同的结果
+    // 多态体现，同一个指针->不同的结果
     worker *worker1 = new employee(1, "张三", 1);
     worker1->showInfo();
+    delete worker1;
     worker1 = new employee(2, "李三", 2);
     worker1->showInfo();
+    delete worker1;
+    worker1 = NULL;
 }
 
 int main()
@@ -26,7 +31,6 @@ int main()
     wm.Show_Menu();
 
     int choice = 0;
-    test02();
     /*
     while (true)
     {

@@ -17,7 +17,7 @@ public:
     worker(/* args */)
     {
     }
-    ~worker()
+    virtual ~worker()
     {
     }
 };
