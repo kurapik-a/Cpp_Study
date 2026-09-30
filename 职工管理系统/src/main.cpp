@@ -36,7 +36,6 @@ void test02()
 int main()
 {
     WorkManager wm;
-    wm.Show_Menu();
 
     int choice = 0;
 
