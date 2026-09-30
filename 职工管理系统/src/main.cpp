@@ -39,7 +39,7 @@ int main()
     wm.Show_Menu();
 
     int choice = 0;
-    /*
+
     while (true)
     {
         wm.Show_Menu();
@@ -49,12 +49,12 @@ int main()
         switch (choice)
         {
         case 0:
-            //退出
+            // 退出
             wm.ExitSystem();
             break;
         case 1:
-            // 增加0
-
+            // 增加
+            wm.addemployee();
             break;
         case 2:
             // 显示
@@ -85,7 +85,6 @@ int main()
             break;
         }
     }
-        */
 
     return 0;
 }
