@@ -58,7 +58,7 @@ int main()
             break;
         case 2:
             // 显示
-
+            wm.showemp();
             break;
         case 3:
             // 删除

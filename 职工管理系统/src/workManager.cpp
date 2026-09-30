@@ -4,8 +4,40 @@ using namespace std;
 
 WorkManager::WorkManager(/* args */)
 {
-    this->m_empnum = 0;
-    this->m_emparr = NULL;
+    ifstream ifs;
+    ifs.open(FILENAME, ios::in);
+
+    // 文件不存在情况
+    if (!ifs.is_open())
+    {
+        this->m_empnum = 0;       // 初始化人数
+        this->m_fileisempty = true;  // 初始化文件为空标志
+        this->m_emparr = NULL;    // 初始化数组
+        ifs.close(); // 关闭文件
+        return;
+    }
+
+    // 文件存在，并且没有记录
+    char ch;
+    ifs >> ch;
+    if (ifs.eof())
+    {
+        this->m_empnum = 0;
+        this->m_fileisempty = true;
+        this->m_emparr = NULL;
+        ifs.close();
+        return;
+    }
+
+    // 文件存在，并且保存职工数据
+    int num = this->getempnum();
+    this->m_empnum = num;         // 更新成员属性
+    this->m_fileisempty = false;  // 更新职工不为空标志
+
+    // 根据职工数创建数组
+    this->m_emparr = new worker *[this->m_empnum];
+    // 初始化职工
+    initemp();
 }
 
 WorkManager::~WorkManager()
@@ -32,6 +64,75 @@ void WorkManager::saveemp()
     }
 
     ofs.close();
+}
+
+// 统计人数
+int WorkManager::getempnum()
+{
+    ifstream ifs;
+    ifs.open(FILENAME, ios::in);
+
+    int id;
+    string name;
+    int dId;
+
+    int num = 0;
+
+    while (ifs >> id && ifs >> name && ifs >> dId)
+    {
+        // 记录人数
+        num++;
+    }
+    ifs.close();
+
+    return num;
+}
+
+// 初始化员工
+void WorkManager::initemp()
+{
+    ifstream ifs;
+    ifs.open(FILENAME, ios::in);
+
+    int id;
+    string name;
+    int dId;
+
+    int index = 0;
+    while (ifs >> id && ifs >> name && ifs >> dId)
+    {
+        worker *wp = NULL;
+        // 根据不同的部门Id创建不同对象
+        if (dId == 1) // 1普通员工
+        {
+            wp = new employee(id, name, dId);
+        }
+        else // 老板
+        {
+            wp = new boss(id, name, dId);
+        }
+        // 存放在数组中
+        this->m_emparr[index] = wp;
+        index++;
+    }
+    ifs.close();
+}
+
+// 显示职工
+void WorkManager::showemp()
+{
+    if (this->m_fileisempty)
+    {
+        cout << "文件不存在或记录为空！" << endl;
+    }
+    else
+    {
+        for (int i = 0; i < this->m_empnum; i++)
+        {
+            // 利用多态调用接口
+            this->m_emparr[i]->showInfo();
+        }
+    }
 }
 
 void WorkManager::Show_Menu()
@@ -118,6 +219,8 @@ void WorkManager::addemployee()
         m_emparr = wk;
         // 更新新的个数
         m_empnum = newSize;
+        // 更新职工不为空标志
+        m_fileisempty = false;
         // 提示信息
         cout << "成功添加" << addNum << "名新职工！" << endl;
         saveemp();
