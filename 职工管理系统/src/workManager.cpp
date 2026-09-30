@@ -19,6 +19,21 @@ WorkManager::~WorkManager()
     }
 }
 
+void WorkManager::saveemp()
+{
+
+    ofstream ofs;
+    ofs.open(FILENAME, ios::out);
+    for (int i = 0; i < this->m_empnum; i++)
+    {
+        ofs << this->m_emparr[i]->id << " "
+            << this->m_emparr[i]->name << " "
+            << this->m_emparr[i]->deptid << endl;
+    }
+
+    ofs.close();
+}
+
 void WorkManager::Show_Menu()
 {
     cout << "********************************************" << endl;
@@ -105,6 +120,7 @@ void WorkManager::addemployee()
         m_empnum = newSize;
         // 提示信息
         cout << "成功添加" << addNum << "名新职工！" << endl;
+        saveemp();
     }
     else
     {

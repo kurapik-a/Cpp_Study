@@ -2,6 +2,10 @@
 #define WORKMANAGER_H
 
 #include <iostream>
+
+#include <fstream>
+#define FILENAME "empfile.txt"
+
 #include "worker.h"
 #include "employee.h"
 #include "boss.h"
@@ -21,6 +25,7 @@ public:
     void Show_Menu();
     void ExitSystem();
     void addemployee();
+    void saveemp();
 };
 
 #endif
