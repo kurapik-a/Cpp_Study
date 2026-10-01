@@ -4,7 +4,7 @@
 
 #include "employee.h"
 #include "boss.h"
-   
+
 using namespace std;
 
 void test01()
@@ -77,7 +77,7 @@ int main()
             break;
         case 7:
             // 清空
-
+            wm.Cleanfile();
             break;
 
         default:

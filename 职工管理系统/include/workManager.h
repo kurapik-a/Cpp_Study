@@ -43,6 +43,8 @@ public:
     void Findemp();
     // 排序职工
     void Sortemp();
+    // 清空文件
+    void Cleanfile();
 };
 
 #endif

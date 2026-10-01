@@ -374,6 +374,40 @@ void WorkManager::Sortemp()
     }
 }
 
+// 清空文件
+void WorkManager::Cleanfile()
+{
+    cout << "确认清空？" << endl;
+    cout << "1、确认" << endl;
+    cout << "2、返回" << endl;
+
+    int select = 0;
+    cin >> select;
+
+    if (select == 1)
+    {
+        // 打开模式 ios::trunc 如果存在删除文件并重新创建
+        ofstream ofs(FILENAME, ios::trunc);
+        ofs.close();
+
+        if (this->m_emparr != NULL)
+        {
+            for (int i = 0; i < this->m_empnum; i++)
+            {
+                if (this->m_emparr[i] != NULL)
+                {
+                    delete this->m_emparr[i]; // 释放每个职工对象
+                }
+            }
+            this->m_empnum = 0;
+            delete[] this->m_emparr; // 释放指针数组本身
+            this->m_emparr = NULL;
+            this->m_fileisempty = true;
+        }
+        cout << "清空成功！" << endl;
+    }
+}
+
 void WorkManager::Show_Menu()
 {
     cout << "********************************************" << endl;
