@@ -1,6 +1,5 @@
 #include <iostream>
 
-
 using namespace std;
 
 // 利用模板提供通用的交换函数
