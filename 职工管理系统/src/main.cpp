@@ -73,7 +73,7 @@ int main()
             break;
         case 6:
             // 排序
-
+            wm.Sortemp();
             break;
         case 7:
             // 清空

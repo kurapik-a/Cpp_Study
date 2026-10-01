@@ -41,6 +41,8 @@ public:
     void Modemp();
     // 查找职工
     void Findemp();
+    // 排序职工
+    void Sortemp();
 };
 
 #endif

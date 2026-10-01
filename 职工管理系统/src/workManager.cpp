@@ -322,6 +322,58 @@ void WorkManager::Findemp()
     }
 }
 
+// 排序职工
+void WorkManager::Sortemp()
+{
+    if (this->m_fileisempty)
+    {
+        cout << "文件不存在或记录为空！" << endl;
+    }
+    else
+    {
+        cout << "请选择排序方式： " << endl;
+        cout << "1、按职工号进行升序" << endl;
+        cout << "2、按职工号进行降序" << endl;
+
+        int select = 0;
+        cin >> select;
+
+        for (int i = 0; i < this->m_empnum; i++)
+        {
+            int minOrMax = i;
+            for (int j = i + 1; j < this->m_empnum; j++)
+            {
+                if (select == 1) // 升序
+                {
+                    if (this->m_emparr[minOrMax]->id > this->m_emparr[j]->id)
+                    {
+                        minOrMax = j;
+                    }
+                }
+                else // 降序
+                {
+                    if (this->m_emparr[minOrMax]->id < this->m_emparr[j]->id)
+                    {
+                        minOrMax = j;
+                    }
+                }
+            }
+
+            if (i != minOrMax)
+            {
+                // 交换两个指针，对象本身不动
+                worker *temp = this->m_emparr[i];
+                this->m_emparr[i] = this->m_emparr[minOrMax];
+                this->m_emparr[minOrMax] = temp;
+            }
+        }
+
+        cout << "排序成功,排序后结果为：" << endl;
+        this->saveemp();  // 排序后同步到文件
+        this->showemp();  // 展示排序结果
+    }
+}
+
 void WorkManager::Show_Menu()
 {
     cout << "********************************************" << endl;
