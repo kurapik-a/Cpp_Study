@@ -4,7 +4,7 @@
 
 #include "employee.h"
 #include "boss.h"
-
+   
 using namespace std;
 
 void test01()
@@ -61,7 +61,7 @@ int main()
             break;
         case 3:
             // 删除
-
+            wm.Delemp();
             break;
         case 4:
             // 修改

@@ -33,6 +33,10 @@ public:
     void initemp();
     // 显示职工
     void showemp();
+    // 按照职工编号判断职工是否存在,若存在返回职工在数组中位置，不存在返回-1
+    int Isexist(int id);
+    // 删除职工
+    void Delemp();
 };
 
 #endif

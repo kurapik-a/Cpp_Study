@@ -10,10 +10,10 @@ WorkManager::WorkManager(/* args */)
     // 文件不存在情况
     if (!ifs.is_open())
     {
-        this->m_empnum = 0;       // 初始化人数
-        this->m_fileisempty = true;  // 初始化文件为空标志
-        this->m_emparr = NULL;    // 初始化数组
-        ifs.close(); // 关闭文件
+        this->m_empnum = 0;         // 初始化人数
+        this->m_fileisempty = true; // 初始化文件为空标志
+        this->m_emparr = NULL;      // 初始化数组
+        ifs.close();                // 关闭文件
         return;
     }
 
@@ -31,8 +31,8 @@ WorkManager::WorkManager(/* args */)
 
     // 文件存在，并且保存职工数据
     int num = this->getempnum();
-    this->m_empnum = num;         // 更新成员属性
-    this->m_fileisempty = false;  // 更新职工不为空标志
+    this->m_empnum = num;        // 更新成员属性
+    this->m_fileisempty = false; // 更新职工不为空标志
 
     // 根据职工数创建数组
     this->m_emparr = new worker *[this->m_empnum];
@@ -133,6 +133,62 @@ void WorkManager::showemp()
             this->m_emparr[i]->showInfo();
         }
     }
+}
+
+// 删除职工
+void WorkManager::Delemp()
+{
+    if (this->m_fileisempty)
+    {
+        cout << "文件不存在或记录为空！" << endl;
+    }
+    else
+    {
+        // 按职工编号删除
+        cout << "请输入想要删除的职工号：" << endl;
+        int id = 0;
+        cin >> id;
+
+        int index = this->Isexist(id);
+
+        if (index != -1) // 说明index上位置数据需要删除
+        {
+            delete this->m_emparr[index]; // 释放该职工对象
+            for (int i = index; i < this->m_empnum - 1; i++)
+            {
+                this->m_emparr[i] = this->m_emparr[i + 1]; // 后面的数据前移
+            }
+            this->m_empnum--; // 更新人数
+            if (this->m_empnum == 0)
+            {
+                this->m_fileisempty = true; // 删空后更新文件为空标志
+            }
+
+            this->saveemp(); // 删除后数据同步到文件中
+            cout << "删除成功！" << endl;
+        }
+        else
+        {
+            cout << "删除失败，未找到该职工" << endl;
+        }
+    }
+}
+
+int WorkManager::Isexist(int id)
+{
+    int index = -1;
+
+    for (int i = 0; i < this->m_empnum; i++)
+    {
+        if (this->m_emparr[i]->id == id)
+        {
+            index = i;
+
+            break;
+        }
+    }
+
+    return index;
 }
 
 void WorkManager::Show_Menu()
