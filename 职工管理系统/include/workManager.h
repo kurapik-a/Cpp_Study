@@ -37,6 +37,10 @@ public:
     int Isexist(int id);
     // 删除职工
     void Delemp();
+    // 修改职工
+    void Modemp();
+    // 查找职工
+    void Findemp();
 };
 
 #endif

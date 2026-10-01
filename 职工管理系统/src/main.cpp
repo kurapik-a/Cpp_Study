@@ -65,11 +65,11 @@ int main()
             break;
         case 4:
             // 修改
-
+            wm.Modemp();
             break;
         case 5:
             // 查找
-
+            wm.Findemp();
             break;
         case 6:
             // 排序
