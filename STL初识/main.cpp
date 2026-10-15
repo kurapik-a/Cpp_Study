@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <stack>
 using namespace std;
 
 void MyPrint(int val)
@@ -48,6 +49,7 @@ void test01()
 
 int main()
 {
+    stack<int> s1;
 
     test01();
 
