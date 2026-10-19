@@ -3,11 +3,13 @@
 #include <iostream>
 using namespace std;
 
+/*构造函数*/
 TicketMachine::TicketMachine(/* args */)
     : PRICE(10), balance(0), total(0)
 {
 }
 
+/*析构函数*/
 TicketMachine::~TicketMachine()
 {
 }
